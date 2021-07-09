@@ -15,6 +15,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.SignatureException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
@@ -24,6 +25,7 @@ import java.util.Date;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class JwtService {
 
     private static final String SECRET_KEY = PropertyUtil.getProperty("spring.security.jwt.secret-key");
