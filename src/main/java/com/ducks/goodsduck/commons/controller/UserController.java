@@ -20,7 +20,6 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
-    private final JwtService jwtService;
 
     @GetMapping("/oauth2/authorization/naver")
     public UserDto oauth2AuthorizationNaver(@RequestParam("code") String code, @RequestParam("state") String state, HttpServletResponse response) {
@@ -46,23 +45,6 @@ public class UserController {
         System.out.println("===================================");
 
         return userService.signUp(userSignUpRequestDto);
-    }
-
-    // 비정상적인 사용자 접근 불가
-    @GetMapping("/login")
-    public UserDto isValidAccess(@RequestParam String token, HttpServletRequest request) {
-
-        System.out.println("===================================");
-        System.out.println("/api/v1/login(isValidAccess)");
-        System.out.println("===================================");
-
-        System.out.println(token.getClass());
-        System.out.println("param token " + token);
-
-//        String jwt = request.getHeader("jwt");
-        String jwt = token;
-
-        return jwtService.isValidAccess(jwt);
     }
 
 //    @GetMapping("/user")
