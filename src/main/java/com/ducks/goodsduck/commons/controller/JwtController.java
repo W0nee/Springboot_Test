@@ -4,6 +4,7 @@ import com.ducks.goodsduck.commons.model.dto.JwtDto;
 import com.ducks.goodsduck.commons.model.dto.UserDto;
 import com.ducks.goodsduck.commons.service.JwtService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,15 +12,14 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 @RestController
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @RequestMapping("/api/v1")
 public class JwtController {
 
     private final JwtService jwtService;
 
-    @PostMapping("/hi")
-    public void aa(@RequestBody JwtDto jwtDto) {
-        System.out.println(jwtDto.getId());
+    public JwtController(@Lazy JwtService jwtService) {
+        this.jwtService = jwtService;
     }
 
     @PostMapping("/gen/token")

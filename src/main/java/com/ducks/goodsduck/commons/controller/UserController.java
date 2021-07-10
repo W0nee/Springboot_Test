@@ -1,18 +1,13 @@
 package com.ducks.goodsduck.commons.controller;
 
-import com.ducks.goodsduck.commons.model.dto.SocialAccountDto;
 import com.ducks.goodsduck.commons.model.dto.UserDto;
 import com.ducks.goodsduck.commons.model.dto.UserSignUpRequestDto;
-import com.ducks.goodsduck.commons.model.entity.User;
-import com.ducks.goodsduck.commons.model.enums.UserRole;
-import com.ducks.goodsduck.commons.service.JwtService;
 import com.ducks.goodsduck.commons.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor

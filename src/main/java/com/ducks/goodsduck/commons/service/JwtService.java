@@ -14,6 +14,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 import io.jsonwebtoken.security.SignatureException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,12 +25,16 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Service
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @Transactional
 public class JwtService {
 
     private static final String SECRET_KEY = PropertyUtil.getProperty("spring.security.jwt.secret-key");
     private final UserRepository userRepository;
+
+    public JwtService(@Lazy UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public String createJwt(JwtDto jwtDto, long ttl) {
 
